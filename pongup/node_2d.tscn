@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://ojrertu7qtef"]
+
+[ext_resource type="PackedScene" uid="uid://g31xakn0ub7m" path="res://character_body_2d.tscn" id="1_gne0x"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_kwx26"]
+[ext_resource type="PackedScene" uid="uid://0h3ctanr5kej" path="res://bola.tscn" id="3_1cwua"]
+[ext_resource type="PackedScene" uid="uid://qb70w883tclj" path="res://player_2.tscn" id="3_klehs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e0q6"]
+size = Vector2(1153, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w41t"]
+size = Vector2(37, 647)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kwx26")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_gne0x")]
+visibility_layer = 3
+position = Vector2(1080, 268)
+side = 1
+
+[node name="player2" parent="." instance=ExtResource("3_klehs")]
+position = Vector2(90, 268)
+
+[node name="top" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top"]
+position = Vector2(576.5, -20.5)
+shape = SubResource("RectangleShape2D_2e0q6")
+
+[node name="bot" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bot"]
+position = Vector2(577, 669)
+shape = SubResource("RectangleShape2D_2e0q6")
+
+[node name="right" type="Area2D" parent="."]
+position = Vector2(1142, 504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(28.5, -179.5)
+shape = SubResource("RectangleShape2D_1w41t")
+
+[node name="left" type="Area2D" parent="."]
+position = Vector2(-47, 504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(28.5, -179.5)
+shape = SubResource("RectangleShape2D_1w41t")
+
+[node name="bola" parent="." instance=ExtResource("3_1cwua")]
+visibility_layer = 3
+position = Vector2(161, 257)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 428.0
+offset_top = 77.0
+offset_right = 468.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 676.0
+offset_top = 77.0
+offset_right = 716.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="bot" to="." method="_on_bot_body_entered"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]

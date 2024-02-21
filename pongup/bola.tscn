@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://0h3ctanr5kej"]
+
+[ext_resource type="Script" path="res://bola.gd" id="1_b5nab"]
+[ext_resource type="Texture2D" uid="uid://bpsagi4hd6g3r" path="res://batl.png" id="1_bpvyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stgfl"]
+size = Vector2(36, 57)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_b5nab")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, 4.78125)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("1_bpvyl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, 4.5)
+shape = SubResource("RectangleShape2D_stgfl")

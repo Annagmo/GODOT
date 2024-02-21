@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://g31xakn0ub7m"]
+
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_yspgc"]
+[ext_resource type="Texture2D" uid="uid://dqiv8bc5fwujp" path="res://protective shield-export2.png" id="2_bilox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4iua"]
+size = Vector2(85, 131)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_yspgc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 2.188)
+texture = ExtResource("2_bilox")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 3.5)
+shape = SubResource("RectangleShape2D_x4iua")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

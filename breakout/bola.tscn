@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://drb424ffb7cfa"]
+
+[ext_resource type="Texture2D" uid="uid://8hd3chyi3xja" path="res://batl.png" id="1_tyufu"]
+[ext_resource type="Script" path="res://bola.gd" id="1_xwrt2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nd2y"]
+size = Vector2(32, 40)
+
+[node name="bola" type="CharacterBody2D"]
+script = ExtResource("1_xwrt2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(600, 300)
+scale = Vector2(1, 0.813725)
+texture = ExtResource("1_tyufu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(600, 300)
+shape = SubResource("RectangleShape2D_5nd2y")
